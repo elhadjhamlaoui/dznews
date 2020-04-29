@@ -1,4 +1,4 @@
-import { page } from '../app.js'
+import { page, pageBreaking } from '../app.js'
 
 export const getNews = async (num) => {
   const url =
@@ -40,9 +40,10 @@ export const getNews = async (num) => {
           .querySelector('div[class~="article__meta"] > h2 > a')
           .getAttribute('href')
 
-        article.readableTime = element.querySelector(
-          'div[class~="article__meta"] > time'
-        ).textContent
+        article.readableTime = element
+          .querySelector('div[class~="article__meta"] > time')
+          .getAttribute('title')
+
         article.dateTime = element
           .querySelector('div[class~="article__meta"] > time')
           .getAttribute('title')
@@ -58,14 +59,14 @@ export const getNews = async (num) => {
 export const getBreakingNews = async () => {
   const url = 'https://www.ennaharonline.com/'
 
-  await page.goto(url, {
+  await pageBreaking.goto(url, {
     waitUntil: 'load',
     // Remove the timeout
     timeout: 0,
   })
 
   // get hotel details
-  let articles = await page.evaluate(() => {
+  let articles = await pageBreaking.evaluate(() => {
     let articles = []
     // get the hotel elements
     let articleElms = document.querySelectorAll(

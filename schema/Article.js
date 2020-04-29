@@ -5,10 +5,11 @@ const ArticleSchema = new mongoose.Schema({
   sourceAr: String,
   link: String,
   image: String,
+  topic: String,
   title: { type: String, unique: true },
   desc: String,
   readableTime: String,
   dateTime: String,
-  created_at: { type: Date, default: Date.now },
+  created_at: { type: Date, default: Date.now, index: -1 },
 })
 export default ArticleSchema

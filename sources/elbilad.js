@@ -1,4 +1,4 @@
-import { page } from '../app.js'
+import { page, pageBreaking } from '../app.js'
 
 export const getNews = async (num) => {
   const url =
@@ -58,14 +58,14 @@ export const getNews = async (num) => {
 export const getBreakingNews = async () => {
   const url = 'http://www.elbilad.net/'
 
-  await page.goto(url, {
+  await pageBreaking.goto(url, {
     waitUntil: 'load',
     // Remove the timeout
     timeout: 0,
   })
 
   // get hotel details
-  let articles = await page.evaluate(() => {
+  let articles = await pageBreaking.evaluate(() => {
     let articles = []
     // get the hotel elements
     let articleElms = document.querySelectorAll('#top_core .odd')

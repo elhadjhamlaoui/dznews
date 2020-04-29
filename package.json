@@ -10,8 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/express": "^4.17.6",
+    "@types/mongoose": "^5.7.12",
     "express": "^4.17.1",
+    "firebase-admin": "^8.11.0",
     "mongoose": "^5.9.9",
     "puppeteer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^2.0.1",
+    "json-loader": "^0.5.7"
   }
 }
