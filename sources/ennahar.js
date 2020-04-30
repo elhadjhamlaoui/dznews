@@ -10,50 +10,51 @@ export const getNews = async (num) => {
     // Remove the timeout
     timeout: 0,
   })
+  let articles = []
+  try {
+    articles = await page.evaluate(() => {
+      let articles = []
+      // get the hotel elements
+      let articleElms = document.querySelectorAll('article[class="article"]')
+      // get the hotel data
+      articleElms.forEach((element) => {
+        let article = {}
+        try {
+          article.source = 'ennahar'
+          article.sourceAr = 'النهار'
 
-  // get hotel details
-  let articles = await page.evaluate(() => {
-    let articles = []
-    console.log('success1')
-    // get the hotel elements
-    let articleElms = document.querySelectorAll('article[class="article"]')
-    // get the hotel data
-    articleElms.forEach((element) => {
-      let article = {}
-      try {
-        article.source = 'ennahar'
-        article.sourceAr = 'النهار'
+          article.image =
+            element
+              .querySelector('div[class~="article__image"] > a')
+              .getAttribute('data-bg') ||
+            element
+              .querySelector('div[class~="article__image"] > a')
+              .getAttribute('style')
+              .split('"')[1]
 
-        article.image =
-          element
-            .querySelector('div[class~="article__image"] > a')
-            .getAttribute('data-bg') ||
-          element
-            .querySelector('div[class~="article__image"] > a')
-            .getAttribute('style')
-            .split('"')[1]
+          article.title = element.querySelector(
+            'div[class~="article__meta"] > h2 > a'
+          ).textContent
 
-        article.title = element.querySelector(
-          'div[class~="article__meta"] > h2 > a'
-        ).textContent
+          article.link = element
+            .querySelector('div[class~="article__meta"] > h2 > a')
+            .getAttribute('href')
 
-        article.link = element
-          .querySelector('div[class~="article__meta"] > h2 > a')
-          .getAttribute('href')
+          article.readableTime = element
+            .querySelector('div[class~="article__meta"] > time')
+            .getAttribute('title')
 
-        article.readableTime = element
-          .querySelector('div[class~="article__meta"] > time')
-          .getAttribute('title')
-
-        article.dateTime = element
-          .querySelector('div[class~="article__meta"] > time')
-          .getAttribute('title')
-      } catch (exception) {}
-      articles.push(article)
+          article.dateTime = element
+            .querySelector('div[class~="article__meta"] > time')
+            .getAttribute('title')
+        } catch (exception) {}
+        articles.push(article)
+      })
+      return articles
     })
-    return articles
-  })
-  console.log('success2')
+  } catch (error) {
+    console.log(error)
+  }
 
   return articles
 }
