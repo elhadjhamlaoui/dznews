@@ -14,6 +14,7 @@ export const getNews = async (num) => {
   // get hotel details
   let articles = await page.evaluate(() => {
     let articles = []
+    console.log('success1')
     // get the hotel elements
     let articleElms = document.querySelectorAll('article[class="article"]')
     // get the hotel data
@@ -52,6 +53,7 @@ export const getNews = async (num) => {
     })
     return articles
   })
+  console.log('success2')
 
   return articles
 }

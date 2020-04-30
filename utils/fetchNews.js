@@ -29,6 +29,7 @@ export const fetchNews = async () => {
   result.push((await elbiladNews(1)).concat(await elbiladNews(2)))
   result.push((await echoroukNews(1)).concat(await echoroukNews(2)))
   result.push((await dzayerinfoNews(1)).concat(await dzayerinfoNews(2)))
+  console.log(`size: ${result.length}`)
 
   const maxSize = Math.max(
     result[0].length,
