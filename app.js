@@ -55,9 +55,7 @@ const initializeBrowser = async () => {
     pageBreaking.on('error', (err) => {
       console.log('error happen at the page: ', err)
     })
-    page.on('requestfailed', (err) =>
-      console.error('REQUEST_FAILED:\n' + util.inspect(err))
-    )
+    page.on('requestfailed', (err) => console.error('REQUEST_FAILED:\n' + err))
 
     pageBreaking.on('pageerror', function (err) {
       console.log('Page2 error: ' + err)
