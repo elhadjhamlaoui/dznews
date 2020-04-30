@@ -50,14 +50,14 @@ const initializeBrowser = async () => {
     })
 
     page.on('pageerror', function (err) {
-      console.log('Page error: ' + err.toString())
+      console.log('Page error: ' + err)
     })
     pageBreaking.on('error', (err) => {
       console.log('error happen at the page: ', err)
     })
 
     pageBreaking.on('pageerror', function (err) {
-      console.log('Page2 error: ' + err.toString())
+      console.log('Page2 error: ' + err)
     })
     startNewsFetching()
     startBreakingFetching()
