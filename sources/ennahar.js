@@ -1,12 +1,9 @@
 import { page, pageBreaking } from '../app.js'
-import url from 'url'
 
 export const getNews = async (num) => {
-  const urlString = url.parse(
-    'https://www.ennaharonline.com/الأخبار-المميزة/page/' + num
-  )
+  const url = 'https://www.ennaharonline.com/الأخبار-المميزة/page/' + num
 
-  await page.goto(urlString, {
+  await page.goto(url, {
     waitUntil: 'load',
     // Remove the timeout
     timeout: 0,
