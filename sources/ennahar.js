@@ -55,7 +55,6 @@ export const getNews = async (num) => {
   } catch (error) {
     console.log(error)
   }
-  console.log(articles)
 
   return articles
 }

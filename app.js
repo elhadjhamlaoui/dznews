@@ -45,6 +45,14 @@ const initializeBrowser = async () => {
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
     )
 
+    page.on('pageerror', function (err) {
+      theTempValue = err.toString()
+      console.log('Page error: ' + theTempValue)
+    })
+    pageBreaking.on('pageerror', function (err) {
+      theTempValue = err.toString()
+      console.log('Page2 error: ' + theTempValue)
+    })
     startNewsFetching()
     startBreakingFetching()
   } catch (error) {
