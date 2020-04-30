@@ -10,6 +10,6 @@ const ArticleSchema = new mongoose.Schema({
   desc: String,
   readableTime: String,
   dateTime: String,
-  created_at: { type: Date, default: Date.now, index: -1 },
+  created_at: { type: Date, default: Date.now },
 })
 export default ArticleSchema

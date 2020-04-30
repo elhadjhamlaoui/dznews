@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     res.send(response)
   })
 
-    .sort({ created_at: -1 })
+    .sort({ _id: -1 })
     .skip(page * 10)
     .limit(10)
 })
@@ -38,7 +38,7 @@ router.get('/breaking', (req, res) => {
     }
     res.send(response)
   })
-    .sort({ created_at: -1 })
+    .sort({ _id: -1 })
     .skip(page * 10)
     .limit(10)
 })
@@ -47,7 +47,7 @@ router.get('/corona', (req, res) => {
   const page = req.query.page > 1 ? req.query.page : 0
 
   Article.find({ topic: 'corona' })
-    .sort({ created_at: -1 })
+    .sort({ _id: -1 })
     .exec((err, result) => {
       const response = {
         articles: result,
