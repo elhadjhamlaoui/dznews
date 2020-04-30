@@ -46,20 +46,21 @@ const initializeBrowser = async () => {
     )
 
     page.on('error', (err) => {
-      console.log('error happen at the page: ', err)
+      console.log('error happen at the page: \n')
+
+      console.error(err)
     })
 
     page.on('pageerror', function (err) {
-      console.log('Page error: ' + err)
+      console.log('Page error: \n')
+      console.error(err)
     })
-    pageBreaking.on('error', (err) => {
-      console.log('error happen at the page: ', err)
-    })
-    page.on('requestfailed', (err) => {console.error('REQUEST_FAILED:\n'); console.error(err)})
 
-    pageBreaking.on('pageerror', function (err) {
-      console.log('Page2 error: ' + err)
+    page.on('requestfailed', (err) => {
+      console.error('REQUEST_FAILED:\n')
+      console.error(err)
     })
+
     startNewsFetching()
     startBreakingFetching()
   } catch (error) {
