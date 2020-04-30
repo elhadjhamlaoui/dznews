@@ -24,19 +24,19 @@ export const fetchNews = async () => {
 
   const result = []
 
-  result.push(await getCoronaNews())
+  //result.push(await getCoronaNews())
   result.push((await ennaharNews(1)).concat(await ennaharNews(2)))
-  result.push((await elbiladNews(1)).concat(await elbiladNews(2)))
-  result.push((await echoroukNews(1)).concat(await echoroukNews(2)))
-  result.push((await dzayerinfoNews(1)).concat(await dzayerinfoNews(2)))
+  //result.push((await elbiladNews(1)).concat(await elbiladNews(2)))
+  //result.push((await echoroukNews(1)).concat(await echoroukNews(2)))
+  //result.push((await dzayerinfoNews(1)).concat(await dzayerinfoNews(2)))
   console.log(`size: ${result.length}`)
 
   const maxSize = Math.max(
-    result[0].length,
-    result[1].length,
-    result[2].length,
-    result[3].length,
-    result[4].length
+    result[0].length
+    // result[1].length,
+    //result[2].length,
+    // result[3].length,
+    // result[4].length
   )
 
   let index = 0
