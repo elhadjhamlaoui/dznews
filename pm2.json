@@ -1,0 +1,12 @@
+{
+  "apps" : [{
+    "name"        : "dznews",
+    "script"      : "app.js",
+    "node_args"   : "--experimental-modules",
+    "merge_logs"  : true,
+    "cwd"         : "/var/www/html/dznews/",
+    "env": {
+        "NODE_ENV": "production"
+    }
+  }]
+}

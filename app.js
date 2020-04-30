@@ -56,7 +56,7 @@ const startNewsFetching = () => {
   fetchNews()
   setInterval(() => {
     fetchNews()
-  }, 1000 * 60 * 10)
+  }, 1000 * 60 * 15)
 }
 
 const startBreakingFetching = () => {

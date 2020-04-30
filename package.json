@@ -6,7 +6,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "safestart":"node --experimental-modules app.mjs"
+    "safestart":"node --experimental-modules app.js",
+        "start": "node --experimental-modules app.js "
+
   },
   "author": "",
   "license": "ISC",

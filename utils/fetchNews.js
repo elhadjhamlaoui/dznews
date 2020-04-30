@@ -63,7 +63,9 @@ export const fetchNews = async () => {
     }
 
     Article.create(articles).catch((error) => {})
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const fetchBreaking = async () => {
@@ -93,5 +95,7 @@ export const fetchBreaking = async () => {
     }
 
     Breaking.create(articles).catch((error) => {})
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 }
