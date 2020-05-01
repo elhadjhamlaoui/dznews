@@ -30,6 +30,13 @@ router.get('/', (req, res) => {
     .limit(10)
 })
 
+router.post('/', (req, res) => {
+  Article.create(req.body.articles)
+    .then((value) => {})
+    .catch((error) => {})
+  res.status(200).send()
+})
+
 router.get('/breaking', (req, res) => {
   const page = req.query.page > 1 ? req.query.page : 0
   Breaking.find((err, result) => {
@@ -41,6 +48,16 @@ router.get('/breaking', (req, res) => {
     .sort({ _id: -1 })
     .skip(page * 10)
     .limit(10)
+})
+
+router.post('/breaking', (req, res) => {
+  Breaking.create(req.body.articles)
+    .then((value) => {
+      res.status(200).send()
+    })
+    .catch((error) => {
+      res.status(400).send()
+    })
 })
 
 router.get('/corona', (req, res) => {

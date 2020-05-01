@@ -10,7 +10,8 @@ let page = null
 let pageBreaking = null
 
 const app = express()
-
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true }))
 app.use('/api/articles', articlesRouter)
 
 const port = process.env.PORT || 3000
@@ -23,7 +24,7 @@ const sources = ['ennahar', 'elbilad', 'echorouk', 'dzayerinfo']
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
   console.log('connected')
-  initializeBrowser()
+  //initializeBrowser()
   app.listen(port, () => console.log(`started listening at port ${port} ...`))
 })
 
@@ -44,22 +45,6 @@ const initializeBrowser = async () => {
     await pageBreaking.setUserAgent(
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'
     )
-
-    page.on('error', (err) => {
-      console.log('error happen at the page: \n')
-
-      console.error(err)
-    })
-
-    page.on('pageerror', function (err) {
-      console.log('Page error: \n')
-      console.error(err)
-    })
-
-    page.on('requestfailed', (err) => {
-      console.error('REQUEST_FAILED:\n')
-      console.error(err)
-    })
 
     startNewsFetching()
     startBreakingFetching()

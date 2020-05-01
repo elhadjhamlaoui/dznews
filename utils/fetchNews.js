@@ -1,4 +1,6 @@
 import { mongoose } from '../app.js'
+import request from 'request'
+
 import { getNews as ennaharNews } from '../sources/ennahar.js'
 import { getNews as echoroukNews } from '../sources/echourouk.js'
 import { getNews as elbiladNews } from '../sources/elbilad.js'
@@ -43,7 +45,7 @@ export const fetchNews = async () => {
   while (index < maxSize) {
     result.forEach((source, i) => {
       if (source[index]) {
-        const article = new Article(source[index])
+        const article = source[index]
         articles.push(article)
 
         if (index == 0) {
@@ -62,7 +64,8 @@ export const fetchNews = async () => {
     index++
   }
 
-  Article.create(articles).catch((error) => {})
+  //Article.create(articles).catch((error) => {})
+  sendArticles(articles)
 }
 
 export const fetchBreaking = async () => {
@@ -85,10 +88,35 @@ export const fetchBreaking = async () => {
   let index = 0
   while (index < maxSize) {
     result.forEach((source) => {
-      if (source[index]) articles.push(new Breaking(source[index]))
+      if (source[index]) articles.push(source[index])
     })
     index++
   }
 
-  Breaking.create(articles).catch((error) => {})
+  //Breaking.create(articles).catch((error) => {})
+  sendBreaking(articles)
+}
+
+const sendArticles = (articles) => {
+  request.post(
+    'https://coronaviruse.tech/api/articles',
+    { json: { articles: articles } },
+    function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body)
+      }
+    }
+  )
+}
+
+const sendBreaking = (articles) => {
+  request.post(
+    'https://coronaviruse.tech/api/articles/breaking',
+    { json: { articles: articles } },
+    function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(body)
+      }
+    }
+  )
 }

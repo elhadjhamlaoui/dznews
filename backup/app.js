@@ -23,7 +23,7 @@ const sources = ['ennahar', 'elbilad', 'echorouk', 'dzayerinfo']
 db.on('error', console.error.bind(console, 'connection error:'))
 db.once('open', () => {
   console.log('connected')
-  initializeBrowser()
+  //initializeBrowser()
   app.listen(port, () => console.log(`started listening at port ${port} ...`))
 })
 

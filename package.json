@@ -6,9 +6,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "safestart":"node --experimental-modules app.js",
-        "start": "node --experimental-modules app.js "
-
+    "safestart": "node --experimental-modules app.js",
+    "start": "node --experimental-modules app.js "
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +17,8 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.11.0",
     "mongoose": "^5.9.9",
-    "puppeteer": "^3.0.0"
+    "puppeteer": "^3.0.0",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@types/puppeteer": "^2.0.1",
