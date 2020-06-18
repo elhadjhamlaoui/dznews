@@ -3,6 +3,7 @@ import { mongoose } from '../app.js'
 
 import ArticleSchema from '../schema/Article.js'
 
+
 const router = express.Router()
 
 const Article = mongoose.model('article', ArticleSchema, 'articles')
@@ -31,6 +32,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  
   Article.create(req.body.articles)
     .then((value) => {})
     .catch((error) => {})
@@ -51,13 +53,11 @@ router.get('/breaking', (req, res) => {
 })
 
 router.post('/breaking', (req, res) => {
+  
   Breaking.create(req.body.articles)
-    .then((value) => {
-      res.status(200).send()
-    })
-    .catch((error) => {
-      res.status(400).send()
-    })
+    .then((value) => {})
+    .catch((error) => {})
+  res.status(200).send()
 })
 
 router.get('/corona', (req, res) => {
